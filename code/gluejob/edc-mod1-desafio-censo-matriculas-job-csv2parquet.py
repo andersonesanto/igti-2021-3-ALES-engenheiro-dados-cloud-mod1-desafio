@@ -1,10 +1,22 @@
-# 01_microdados_censo_csv_2_parquet
+# edc-mod1-desafio-censo-matriculas-job-csv2parquet
 # ALES
 # Converte os arquivos CSV em parquet
-# usando o cluster Spark
+# usando glue jobs
 
-from pyspark.sql.functions import mean, max, min, col, count
-from pyspark.sql import SparkSession
+import sys
+from awsglue.utils import getResolvedOptions
+from pyspark.context import SparkContext
+from awsglue.context import GlueContext
+from awsglue.job import Job
+
+# @params: [JOB_NAME]
+args = getResolvedOptions(sys.argv, ['JOB_NAME'])
+
+sc = SparkContext()
+glueContext = GlueContext(sc)
+spark = glueContext.spark_session
+job = Job(glueContext)
+job.init(args['JOB_NAME'], args)
 
 spark = (
     SparkSession.builder.appName("ALES-mod1-desafio-csv-2-parquet")

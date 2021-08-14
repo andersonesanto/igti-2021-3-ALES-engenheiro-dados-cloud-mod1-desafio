@@ -1,4 +1,4 @@
-name: Deploy
+name: Deploy edc code
 
 on:
   push:

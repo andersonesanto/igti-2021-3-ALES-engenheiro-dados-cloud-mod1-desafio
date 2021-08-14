@@ -1,9 +1,20 @@
-resource "aws_glue_job" "csv_2_parquet" {
-  name     = "csv_2_parquet"
-  role_arn = aws_iam_role.glue_role.arn
+resource "aws_cloudwatch_log_group" "ecd-mod1-desafio-censo" {
+  name              = "ecd-mod1-desafio-censo-matriculas"
+  retention_in_days = 3
+}
 
+resource "aws_glue_job" "ecd-mod1-desafio-censo-matriculas" {
+  name     = "ecd-mod1-desafio-censo-matriculas-job-csv2parquet"
+  role_arn = aws_iam_role.glue_role.arn
+  glue_version = "2.0"
+  default_arguments = {
+    "--continuous-log-logGroup"          = aws_cloudwatch_log_group.ecd-mod1-desafio-censo.name
+    "--enable-continuous-cloudwatch-log" = "true"
+    "--enable-continuous-log-filter"     = "true"
+    "--enable-metrics"                   = ""
+  }
   command {
-    script_location = "s3://${aws_s3_bucket.datalake.bucket}/code/gluejob/01_microdados_censo_csv_2_parquet.py"
+    script_location = "s3://${aws_s3_bucket.datalake.bucket}/code/gluejob/ecd-mod1-desafio-censo-matriculas-job-csv2parquet.py"
   }
 }
 
