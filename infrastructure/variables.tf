@@ -19,9 +19,9 @@ variable "vpc_id" {
 }
 
 variable "datalake_s3_bucket"{
-  default = "arn:aws:s3:::datalake-mod1-desafio-ales-597495568095"
+  default = "datalake-mod1-desafio-ales-597495568095"
 }
 
 variable "terraform_state_s3_bucket" {
-  default = "arn:aws:s3:::terraform-state-ales-597495568095"
+  default = "terraform-state-ales-597495568095"
 }
