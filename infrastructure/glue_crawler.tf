@@ -1,10 +1,10 @@
 resource "aws_glue_catalog_database" "stream" {
-  name = "edc-mod1-desafio_db"
+  name = "ecd-mod1-desafio-censo-matriculas-db"
 }
 
 resource "aws_glue_crawler" "stream" {
   database_name = aws_glue_catalog_database.stream.name
-  name          = "s3_datalake_staging"
+  name          = "ecd-mod1-desafio-censo-matriculas-crawler"
   role          = aws_iam_role.glue_role.arn
 
   s3_target {
