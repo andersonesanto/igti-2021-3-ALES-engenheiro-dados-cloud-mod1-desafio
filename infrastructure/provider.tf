@@ -1,13 +1,13 @@
 provider "aws" {
-  region = var.aws_region
+  region = "us-east-2"
 }
 
 
 # Centralizar o arquivo de controle de estado do terraform
 terraform {
   backend "s3" {
-    bucket = var.terraform_state_s3_bucket
+    bucket = "terraform-state-ales-597495568095"
     key    = "state/edc/mod1/desafio/terraform.tfstate"
-    region = var.aws_region
+    region = "us-east-2"
   }
 }
