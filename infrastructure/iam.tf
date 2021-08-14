@@ -24,8 +24,6 @@ EOF
 
 }
 
-
-
 resource "aws_iam_policy" "lambda" {
   name        = "IGTIAWSLambdaBasicExecutionRolePolicy"
   path        = "/"
@@ -68,7 +66,6 @@ resource "aws_iam_policy" "lambda" {
 }
 EOF
 }
-
 
 resource "aws_iam_role_policy_attachment" "lambda_attach" {
   role       = aws_iam_role.lambda.name
