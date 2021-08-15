@@ -18,7 +18,7 @@ variable "vpc_id" {
   default = "vpc-d724b4bc"
 }
 
-variable "datalake_s3_bucket"{
+variable "datalake_s3_bucket" {
   default = "datalake-mod1-desafio-ales-597495568095"
 }
 

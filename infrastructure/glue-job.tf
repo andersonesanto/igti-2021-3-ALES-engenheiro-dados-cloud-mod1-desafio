@@ -4,8 +4,8 @@ resource "aws_cloudwatch_log_group" "ecd-mod1-desafio-censo" {
 }
 
 resource "aws_glue_job" "edc-mod1-desafio-censo-matriculas" {
-  name     = "edc-mod1-desafio-censo-matriculas-job-csv2parquet"
-  role_arn = aws_iam_role.glue_role.arn
+  name         = "edc-mod1-desafio-censo-matriculas-job-csv2parquet"
+  role_arn     = aws_iam_role.glue_role.arn
   glue_version = "2.0"
   default_arguments = {
     "--continuous-log-logGroup"          = aws_cloudwatch_log_group.ecd-mod1-desafio-censo.name

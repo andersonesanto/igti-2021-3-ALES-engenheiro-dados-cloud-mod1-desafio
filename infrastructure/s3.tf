@@ -18,7 +18,7 @@ resource "aws_s3_bucket" "datalake" {
 
 resource "aws_s3_bucket_object" "raw-data" {
   bucket = aws_s3_bucket.datalake.id
-    acl    = "private"
-    key    = "raw-data/"
-    source = "/dev/null"
+  acl    = "private"
+  key    = "raw-data/"
+  source = "/dev/null"
 }
