@@ -18,11 +18,6 @@ spark = glueContext.spark_session
 job = Job(glueContext)
 job.init(args['JOB_NAME'], args)
 
-spark = (
-    SparkSession.builder.appName("ALES-mod1-desafio-csv-2-parquet")
-    .getOrCreate()
-)
-
 matricula = (
     spark
     .read
@@ -30,7 +25,7 @@ matricula = (
     .option("header", True)
     .option("inferSchema", True)
     .option("delimiter", "|")
-    .load("s3://datalake-mod1-desafio-ALES-597495568095/raw-data/matricula/")
+    .load("s3://datalake-mod1-desafio-ales-597495568095/raw-data/matricula/")
 )
 
 
@@ -40,5 +35,5 @@ matricula = (
     .mode("overwrite")
     .format("parquet")
     .partitionBy("co_regiao")
-    .save("s3://datalake-mod1-desafio-ALES-597495568095/staging/matricula/")
+    .save("s3://datalake-mod1-desafio-ales-597495568095/staging/matricula/")
 )

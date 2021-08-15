@@ -3,8 +3,8 @@ resource "aws_cloudwatch_log_group" "ecd-mod1-desafio-censo" {
   retention_in_days = 3
 }
 
-resource "aws_glue_job" "ecd-mod1-desafio-censo-matriculas" {
-  name     = "ecd-mod1-desafio-censo-matriculas-job-csv2parquet"
+resource "aws_glue_job" "edc-mod1-desafio-censo-matriculas" {
+  name     = "edc-mod1-desafio-censo-matriculas-job-csv2parquet"
   role_arn = aws_iam_role.glue_role.arn
   glue_version = "2.0"
   default_arguments = {
@@ -14,7 +14,7 @@ resource "aws_glue_job" "ecd-mod1-desafio-censo-matriculas" {
     "--enable-metrics"                   = ""
   }
   command {
-    script_location = "s3://${aws_s3_bucket.datalake.bucket}/code/gluejob/ecd-mod1-desafio-censo-matriculas-job-csv2parquet.py"
+    script_location = "s3://${aws_s3_bucket.datalake.bucket}/code/gluejob/edc-mod1-desafio-censo-matriculas-job-csv2parquet.py"
   }
 }
 
